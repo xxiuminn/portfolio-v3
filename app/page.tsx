@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 import { projects } from "@/lib/projects";
+import { ExternalLinkIcon } from "@/components/external-link-icon";
 import { ScrollReveal } from "@/components/scroll-reveal";
 
 function formatBlogDate(dateStr: string) {
@@ -102,7 +103,10 @@ export default async function HomePage() {
             >
               <div className="proj-card-top">
                 <span className="proj-name">{project.name}</span>
-                <span className="proj-gh">↗ github</span>
+                <span className="proj-gh">
+                  <ExternalLinkIcon className="external-link-icon" />
+                  github
+                </span>
               </div>
               <div className="proj-desc">{project.description}</div>
               <div className="proj-meta">

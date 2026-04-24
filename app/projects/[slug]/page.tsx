@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { ExternalLinkIcon } from "@/components/external-link-icon";
 import { projects, getProjectBySlug } from "@/lib/projects";
 
 export async function generateStaticParams() {
@@ -36,12 +37,14 @@ export default async function ProjectPage({
         <div className="project-links">
           {project.github && (
             <a href={project.github} target="_blank" rel="noopener noreferrer" className="primary">
-              ↗ GitHub
+              <ExternalLinkIcon className="external-link-icon" />
+              GitHub
             </a>
           )}
           {project.liveUrl && (
             <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-              ↗ Live demo
+              <ExternalLinkIcon className="external-link-icon" />
+              Live demo
             </a>
           )}
         </div>
