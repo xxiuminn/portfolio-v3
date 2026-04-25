@@ -10,6 +10,8 @@ If you are familiar with how DTC brands work, you would know that sales days pro
 
 ## What budget scheduler does
 
+![Budget Scheduler](https://xiuminhow.netlify.app/budget-scheduling.png)
+
 And Meta was smart. In 2023, they introduced a feature called budget scheduler. Budget scheduler lets you pre schedule sharp, short-term budget increases, specifically for high traffic periods to encourage brands to spend more. It's different from Meta's auto rules: 
 
 - Regular budget edits can trigger the learning phase reset, disrupting performance
