@@ -10,7 +10,7 @@ export async function generateStaticParams() {
 }
 
 export default async function PostPage({
-  params
+  params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
@@ -21,25 +21,28 @@ export default async function PostPage({
 
   const allPosts = await getAllPosts();
   const currentIndex = allPosts.findIndex((p) => p.slug === slug);
-  const prevPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+  const prevPost =
+    currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
   const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
 
   const formattedDate = new Date(post.date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
-    day: "numeric"
+    day: "numeric",
   });
 
-  const shortDate = new Date(post.date).toLocaleDateString("en-US", {
-    month: "short",
-    day: "2-digit",
-    year: "numeric"
-  }).toUpperCase();
+  const shortDate = new Date(post.date)
+    .toLocaleDateString("en-US", {
+      month: "short",
+      day: "2-digit",
+      year: "numeric",
+    })
+    .toUpperCase();
 
   return (
     <div className="container">
       <div className="back-nav">
-        <Link href="/">← [Your Name]</Link>
+        <Link href="/">← Xiumin</Link>
       </div>
 
       <header className="article-header">
@@ -55,7 +58,7 @@ export default async function PostPage({
       <div className="author-row">
         <div className="author-avatar" />
         <div>
-          <div className="author-name">[Your Name]</div>
+          <div className="author-name">Xiumin</div>
           <div className="author-date">{formattedDate}</div>
         </div>
       </div>
@@ -85,9 +88,12 @@ export default async function PostPage({
         </nav>
       )}
 
-      <footer className="site-footer" style={{ marginTop: prevPost || nextPost ? 0 : 0 }}>
+      <footer
+        className="site-footer"
+        style={{ marginTop: prevPost || nextPost ? 0 : 0 }}
+      >
         <Link href="/journal">← All writing</Link>
-        <span>hello@yourname.dev</span>
+        <span>xiumin.how.mail@gmail.com</span>
       </footer>
     </div>
   );

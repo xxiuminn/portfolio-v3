@@ -1,58 +1,53 @@
-export type Project = {
-  slug: string;
+import fs from "node:fs/promises";
+import path from "node:path";
+import matter from "gray-matter";
+
+export type ProjectMeta = {
   name: string;
   description: string;
-  longDescription?: string;
   tags: string[];
   github?: string;
   liveUrl?: string;
   year: string;
-  status?: string;
 };
 
-export const projects: Project[] = [
-  {
-    slug: "copy-lab",
-    name: "copy-lab",
-    description: "CLI tool for A/B testing headlines with local LLMs. No API keys, no dashboards.",
-    longDescription: "Built to speed up landing page iteration without vendor lock-in. Runs entirely on your machine via Ollama.",
-    tags: ["TypeScript", "Ollama"],
-    github: "https://github.com",
-    year: "2025",
-    status: "Open Source"
-  },
-  {
-    slug: "funnel-sh",
-    name: "funnel.sh",
-    description: "Minimal conversion tracking you self-host in an afternoon.",
-    longDescription: "A lightweight alternative to bloated analytics platforms. SQLite-backed, single binary.",
-    tags: ["Go", "SQLite"],
-    github: "https://github.com",
-    year: "2025",
-    status: "Open Source"
-  },
-  {
-    slug: "prompt-kit",
-    name: "prompt-kit",
-    description: "Reusable prompt components for React apps. Batteries included.",
-    longDescription: "A collection of composable React components for building LLM-powered UIs quickly.",
-    tags: ["React", "TypeScript"],
-    github: "https://github.com",
-    year: "2024",
-    status: "Open Source"
-  },
-  {
-    slug: "ship-log",
-    name: "ship-log",
-    description: "Public changelog generator from git commits. One command, clean output.",
-    longDescription: "Turns your git history into a readable changelog. Supports markdown and HTML output.",
-    tags: ["Node.js"],
-    github: "https://github.com",
-    year: "2024",
-    status: "Open Source"
-  }
-];
+export type Project = ProjectMeta & {
+  slug: string;
+  content: string;
+};
 
-export function getProjectBySlug(slug: string): Project | null {
-  return projects.find((p) => p.slug === slug) ?? null;
+const projectsDirectory = path.join(process.cwd(), "content", "projects");
+
+async function readProjectFile(fileName: string): Promise<Project> {
+  const fullPath = path.join(projectsDirectory, fileName);
+  const fileContents = await fs.readFile(fullPath, "utf8");
+  const { data, content } = matter(fileContents);
+  const slug = fileName.replace(/\.md$/, "");
+
+  return {
+    slug,
+    content,
+    name: String(data.name),
+    description: String(data.description),
+    tags: Array.isArray(data.tags) ? data.tags : [],
+    github: data.github ? String(data.github) : undefined,
+    liveUrl: data.liveUrl ? String(data.liveUrl) : undefined,
+    year: String(data.year),
+  };
+}
+
+export async function getAllProjects(): Promise<Project[]> {
+  const entries = await fs.readdir(projectsDirectory);
+  const projects = await Promise.all(
+    entries.filter((entry) => entry.endsWith(".md")).map(readProjectFile)
+  );
+  return projects.sort((a, b) => Number(b.year) - Number(a.year));
+}
+
+export async function getProjectBySlug(slug: string): Promise<Project | null> {
+  try {
+    return await readProjectFile(`${slug}.md`);
+  } catch {
+    return null;
+  }
 }

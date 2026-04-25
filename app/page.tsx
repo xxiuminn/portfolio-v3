@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
-import { projects } from "@/lib/projects";
+import { getAllProjects } from "@/lib/projects";
 import { ExternalLinkIcon } from "@/components/external-link-icon";
 import { ScrollReveal } from "@/components/scroll-reveal";
 
@@ -13,6 +13,7 @@ function formatBlogDate(dateStr: string) {
 
 export default async function HomePage() {
   const posts = await getAllPosts();
+  const projects = await getAllProjects();
 
   return (
     <div className="container">
