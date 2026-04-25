@@ -28,7 +28,7 @@ I did it a few times, and I told myself I was never going to do it again.
 
 So I went down the Meta API rabbit hole, read through their documentations, and built my own bulk scheduler tool in Python. It was subsequently deployed on Streamlit so that when I go on leave, my colleagues would be able to use it. With just one button click, all the campaigns are scheduled, done in minutes.
 
-![Bulk Budget Scheduler Tool](https://xiuminhow.netlify.app/public/budget-scheduler.png)
+![Bulk Budget Scheduler Tool](https://xiuminhow.netlify.app/public/budget-scheduler.jpg)
 
 ## What I learnt
 
