@@ -1,9 +1,51 @@
+import { isValidElement, Children } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { ExternalLinkIcon } from "@/components/external-link-icon";
 import { getAllProjects, getProjectBySlug } from "@/lib/projects";
+
+function TechStackParagraph({ children }: { children?: React.ReactNode }) {
+  const childArray = Children.toArray(children);
+
+  if (childArray.length >= 2) {
+    const first = childArray[0];
+    if (
+      isValidElement(first) &&
+      first.type === "strong" &&
+      typeof (first.props as { children?: string }).children === "string" &&
+      (first.props as { children?: string }).children
+        ?.toLowerCase()
+        .startsWith("tech stack")
+    ) {
+      const label = (first.props as { children: string }).children;
+      const restText = childArray
+        .slice(1)
+        .map((c) => (typeof c === "string" ? c : ""))
+        .join("");
+      const techs = restText
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean);
+
+      return (
+        <div className="tech-stack-row">
+          <span className="tech-stack-label">{label}</span>
+          <div className="tech-pills">
+            {techs.map((tech) => (
+              <span key={tech} className="tech-pill">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      );
+    }
+  }
+
+  return <p>{children}</p>;
+}
 
 export async function generateStaticParams() {
   const projects = await getAllProjects();
@@ -68,7 +110,7 @@ export default async function ProjectPage({
 
       {project.content.trim() && (
         <article className="article-body">
-          <Markdown remarkPlugins={[remarkGfm]}>{project.content}</Markdown>
+          <Markdown remarkPlugins={[remarkGfm]} components={{ p: TechStackParagraph }}>{project.content}</Markdown>
         </article>
       )}
 
