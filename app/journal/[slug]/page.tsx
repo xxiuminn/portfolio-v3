@@ -42,7 +42,7 @@ export default async function PostPage({
   return (
     <div className="container">
       <div className="back-nav">
-        <Link href="/">← Xiumin</Link>
+        <Link href="/">← Home</Link>
       </div>
 
       <header className="article-header">
@@ -56,11 +56,8 @@ export default async function PostPage({
       </header>
 
       <div className="author-row">
-        <div className="author-avatar" />
-        <div>
-          <div className="author-name">Xiumin</div>
-          <div className="author-date">{formattedDate}</div>
-        </div>
+        <div className="author-name">Xiumin How</div>
+        <div className="author-date">{formattedDate}</div>
       </div>
 
       <article className="article-body">

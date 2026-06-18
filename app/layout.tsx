@@ -1,32 +1,46 @@
 import type { Metadata } from "next";
-import { Lora, DM_Sans } from "next/font/google";
+import Link from "next/link";
+import { CustomCursor } from "@/components/custom-cursor";
 import "./globals.css";
 
-const lora = Lora({
-  subsets: ["latin"],
-  variable: "--font-lora",
-  weight: ["400", "500", "600"]
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
-  weight: ["300", "400", "500"]
-});
-
 export const metadata: Metadata = {
-  title: "Portfolio",
-  description: "Marketing & tech enthusiast — building and selling."
+  title: "Xiumin How",
+  description: "Building and shipping products.",
 };
 
 export default function RootLayout({
-  children
+  children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
-      <body className={`${lora.variable} ${dmSans.variable}`}>
+      <body>
+        <CustomCursor />
+        <div className="site-nav-wrapper">
+        <nav className="site-nav">
+          <Link href="/" className="site-nav-name">
+            Xiumin How
+          </Link>
+          <div className="site-nav-links">
+            <a href="mailto:xiumin.how.mail@gmail.com">Email</a>
+            <a
+              href="https://www.linkedin.com/in/howxiumin/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/xxiuminn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Github
+            </a>
+          </div>
+        </nav>
+        </div>
         {children}
       </body>
     </html>

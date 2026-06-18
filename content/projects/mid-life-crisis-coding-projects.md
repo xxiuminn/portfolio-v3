@@ -1,6 +1,6 @@
 ---
 name: Had a quarter-life crisis (so I learnt coding)
-description: Full stack web apps built from scratch, before ChatGPT's era.
+description: Full stack web apps built from scratch, before Claude's era.
 tags: ["JavaScript", "React.js", "Node.js", "PostgreSQL", "MongoDB"]
 year: "2024"
 ---
@@ -11,7 +11,7 @@ That phase did’t last long. Once I got a hang of the fundamentals, something s
 
 That frustration pushed me to explore a career outside marketing entirely. I was even offered a software engineering role and genuinely considered it. TLDR I turned it down (oops sorry to disappoint), because I realised the bigger opportunity was bringing the engineering mindset into marketing. If decisions are made illogically, I should be the one fixing it.
 
-So here’s a part of me during my quater-life crisis, building apps from scratch before ChatGPT era.
+So here’s a part of me during my quater-life crisis, building apps from scratch before Claude's era.
 
 ---
 

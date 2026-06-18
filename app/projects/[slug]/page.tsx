@@ -65,13 +65,15 @@ export default async function ProjectPage({
   const allProjects = await getAllProjects();
   const currentIndex = allProjects.findIndex((p) => p.slug === slug);
   const prevProject =
-    currentIndex < allProjects.length - 1 ? allProjects[currentIndex + 1] : null;
+    currentIndex < allProjects.length - 1
+      ? allProjects[currentIndex + 1]
+      : null;
   const nextProject = currentIndex > 0 ? allProjects[currentIndex - 1] : null;
 
   return (
     <div className="container">
       <div className="back-nav">
-        <Link href="/">← Xiumin</Link>
+        <Link href="/">← Home</Link>
       </div>
 
       <header className="project-header">
@@ -110,7 +112,12 @@ export default async function ProjectPage({
 
       {project.content.trim() && (
         <article className="article-body">
-          <Markdown remarkPlugins={[remarkGfm]} components={{ p: TechStackParagraph }}>{project.content}</Markdown>
+          <Markdown
+            remarkPlugins={[remarkGfm]}
+            components={{ p: TechStackParagraph }}
+          >
+            {project.content}
+          </Markdown>
         </article>
       )}
 

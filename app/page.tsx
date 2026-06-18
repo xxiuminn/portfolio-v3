@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/posts";
 import { getAllProjects } from "@/lib/projects";
-import { ExternalLinkIcon } from "@/components/external-link-icon";
 import { ScrollReveal } from "@/components/scroll-reveal";
 
 function formatBlogDate(dateStr: string) {
@@ -18,51 +17,15 @@ export default async function HomePage() {
   return (
     <div className="container">
       <ScrollReveal />
-
       {/* Hero */}
-      <section className="hero fade fade-1">
-        <div className="hero-inner">
-          <div className="avatar">
-            <img src="/image-avatar.png" alt="Xiumin" />
-          </div>
-          <div className="hero-text">
-            <h1>Hi, I&apos;m Xiumin.</h1>
-            <p>
-              A marketing &amp; tech enthusiast, passionate about building and
-              selling.
-            </p>
-          </div>
-        </div>
-        <div className="socials">
-          <a href="mailto:xiumin.how.mail@gmail.com">Email</a>
-          <a
-            href="https://github.com/xxiuminn"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-          <a
-            href="https://www.linkedin.com/in/howxiumin/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
-          </a>
-        </div>
+      <section className="hero">
+        <p className="hero-line hero-line-1">Hello,</p>
+        <p className="hero-line hero-line-2">I&apos;m Xiumin.</p>
+        <p className="hero-line hero-line-3">I write about what I&apos;m</p>
+        <p className="hero-line hero-line-4">learning, testing and building.</p>
       </section>
 
-      {/* AI Portfolio Image */}
-      {/* <section className="ai-image-wrap reveal">
-        <div className="ai-image-ph">
-          <img src="/image-avatar.png" alt="AI-generated artwork" />
-        </div>
-        <p className="ai-image-caption">
-          A selection of AI-generated works, 2024–2026
-        </p>
-      </section> */}
-
-      {/* Writing */}
+      {/* Journal */}
       <section className="reveal">
         <div className="section-header">
           <h2>Journal</h2>
@@ -95,37 +58,27 @@ export default async function HomePage() {
             github.com/xxiuminn →
           </a>
         </div>
-        <div className="projects-grid">
+        <div className="projects-list">
           {projects.map((project) => (
             <Link
               key={project.slug}
               href={`/projects/${project.slug}`}
-              className="proj-card"
+              className="proj-item"
             >
-              <div className="proj-card-top">
+              <div className="proj-item-top">
                 <span className="proj-name">{project.name}</span>
-                <span className="proj-gh">
-                  <ExternalLinkIcon className="external-link-icon" />
-                  github
-                </span>
+                <span className="proj-year">{project.year}</span>
               </div>
               <div className="proj-desc">{project.description}</div>
-              <div className="proj-meta">
-                {project.tags.map((tag) => (
-                  <span key={tag} className="proj-tag">
-                    {tag}
-                  </span>
-                ))}
-              </div>
+              <div className="proj-tags">{project.tags.join("  ·  ")}</div>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="site-footer reveal">
         <span>xiumin.how.mail@gmail.com</span>
-        <span>© 2026 Xiumin</span>
+        <span>© 2026 Xiumin How</span>
       </footer>
     </div>
   );
