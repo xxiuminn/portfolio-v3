@@ -281,20 +281,20 @@ body {
   opacity: 0.5;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 .article-meta span {
   margin: 0 6px;
 }
 .article-title {
   font-family: var(--font-sans);
-  font-size: clamp(24px, 4vw, 34px);
+  font-size: clamp(26px, 5vw, 38px);
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.01em;
 }
 .article-subtitle {
-  margin-top: 16px;
+  margin-top: 14px;
   font-size: 18px;
   opacity: 0.65;
   font-family: var(--font-sans);
@@ -492,6 +492,7 @@ body {
   margin-top: 14px;
   font-size: 18px;
   opacity: 0.65;
+  font-family: var(--font-sans);
   font-style: italic;
   line-height: 1.6;
 }
