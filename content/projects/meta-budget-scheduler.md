@@ -14,8 +14,6 @@ Naturally, Meta knows this too.
 
 ![Budget Scheduler](https://xiuminhow.netlify.app/budget-scheduling.png)
 
----
-
 ## The problem
 
 Meta does not let you bulk apply budget schedulers.
@@ -43,8 +41,6 @@ And because this brand runs sales basically all the time, this was not a one-off
 
 I did it a few times and decided I was never going to do it again.
 
----
-
 ## Why I built a bulk version of it
 
 So I went down the Meta API rabbit hole, read through the documentation, and built my own bulk Budget Scheduler tool in Python.
@@ -56,8 +52,6 @@ Instead of manually setting up 100+ campaigns one by one, they could upload the 
 That became our internal **Bulk Budget Scheduler Tool**.
 
 ![Bulk Budget Scheduler Tool](https://xiuminhow.netlify.app/budget-scheduler.jpg)
-
----
 
 ## What I learnt
 

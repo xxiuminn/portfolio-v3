@@ -13,8 +13,6 @@ That frustration pushed me to explore a career outside marketing entirely. I was
 
 So here’s a part of me during my quater-life crisis, building apps from scratch before Claude's era.
 
----
-
 ## Chores Scheduler
 
 An app that simplifies scheduling and managing household tasks among family members.
@@ -24,8 +22,6 @@ Assign tasks, set schedules, and hold people accountable, all in one place. I ev
 **Tech stack:** React.js, Node.js, Express.js, TanStack, PostgreSQL, Stripe Webhook, AWS EC2
 
 [GitHub](https://github.com/xxiuminn/chores-scheduler)
-
----
 
 ## Doodle Jump
 
@@ -39,8 +35,6 @@ Getting the physics to feel right was unexpectedly hard. But watching the little
 
 [GitHub](https://github.com/xxiuminn/doodle-jump-game) · [Live Site](https://xxiuminn.github.io/doodle-jump-game/)
 
----
-
 ## Service Marketplace
 
 A marketplace app that connects homeowners with vendors offering home services.
@@ -52,8 +46,6 @@ Building the two-sided marketplace logic, making sure both user types had the ri
 **Tech stack:** React.js, Node.js, Express.js, MongoDB, Mongoose
 
 [GitHub](https://github.com/Serenula/Skillful-Hands)
-
----
 
 ## Flights Search Engine
 
